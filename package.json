@@ -4,10 +4,11 @@
   "description": "This repo is my work from going through the [three.js docs tutorial](https:threejs.org/docs/#manual/en/introduction/Creating-a-scene)",
   "private": true,
   "scripts": {
-    "start": "npm run js:watch",
+    "start": "npm-run-all -p js:watch server",
     "build": "npm run js",
     "js": "webpack",
-    "js:watch": "webpack --watch"
+    "js:watch": "webpack --watch",
+    "server": "node tasks/express"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,11 @@
   },
   "homepage": "https://github.com/corinneling/learn-threejs#readme",
   "dependencies": {
+    "colors": "^1.3.3",
+    "copy-webpack-plugin": "^4.6.0",
+    "express": "^4.16.4",
+    "npm-run-all": "^4.1.5",
+    "opener": "^1.5.1",
     "three": "^0.101.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
