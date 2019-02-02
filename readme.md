@@ -2,6 +2,11 @@
 
 This repo is my work from going through the [three.js docs tutorial](https:threejs.org/docs/#manual/en/introduction/Creating-a-scene)
 
+### Setup 
+
+1. Install the threejs npm package with `npm i three --save`
+2. Setup your project with [webpack](https://webpack.js.org/)
+
 ### Notes
 
 To display anything with three js we need:

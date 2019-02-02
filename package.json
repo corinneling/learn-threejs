@@ -1,0 +1,27 @@
+{
+  "name": "three-js-tutorial",
+  "version": "1.0.0",
+  "description": "This repo is my work from going through the [three.js docs tutorial](https:threejs.org/docs/#manual/en/introduction/Creating-a-scene)",
+  "private": true,
+  "scripts": {
+    "start": "npm run js:watch",
+    "build": "npm run js",
+    "js": "webpack",
+    "js:watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corinneling/learn-threejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/corinneling/learn-threejs/issues"
+  },
+  "homepage": "https://github.com/corinneling/learn-threejs#readme",
+  "dependencies": {
+    "three": "^0.101.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
