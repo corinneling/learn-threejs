@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/line.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/js/index.js":
-/*!*************************!*\
-  !*** ./src/js/index.js ***!
-  \*************************/
+/***/ "./src/js/line.js":
+/*!************************!*\
+  !*** ./src/js/line.js ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst scene = new THREE.Scene();\nconst camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);\nconst renderer = new THREE.WebGLRenderer({ alpha: true });\n\nrenderer.setSize(window.innerWidth, window.innerHeight);\nrenderer.setClearColor( 0xffffff, 0);\ndocument.body.appendChild(renderer.domElement);\n\nconst geometry = new THREE.BoxGeometry(2, 2, 2);\nconst material = new THREE.MeshBasicMaterial({\n  color: 0x00bbff\n});\nconst cube = new THREE.Mesh(geometry, material);\n\nscene.add(cube);\ncamera.position.z = 5;\n\nfunction renderScene() {\n  requestAnimationFrame(renderScene);\n  renderer.render(scene, camera);\n  cube.rotation.x += 0.01;\n  cube.rotation.y += 0.01;\n}\n\nrenderScene();\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\nconst scene = new THREE.Scene();\nconst camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500);\nconst renderer = new THREE.WebGLRenderer({ alpha: true });\n\ncamera.position.set(0, 0, 100);\ncamera.lookAt(0, 0, 0);\n\nrenderer.setSize(window.innerWidth, window.innerHeight);\nrenderer.setClearColor( 0xffffff, 0);\ndocument.body.appendChild(renderer.domElement);\n\nconst material = new THREE.LineBasicMaterial({ color: 0x0000ff });\n\nconst geometry = new THREE.Geometry();\ngeometry.vertices.push(new THREE.Vector3(-20, 0, 0));\ngeometry.vertices.push(new THREE.Vector3(0, 20, 0));\ngeometry.vertices.push(new THREE.Vector3(20, 0, 0));\n\nconst line = new THREE.Line(geometry, material);\n\nscene.add(line);\nrenderer.render(scene, camera);\n\nrenderScene();\n\n\n//# sourceURL=webpack:///./src/js/line.js?");
 
 /***/ })
 

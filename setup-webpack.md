@@ -1,4 +1,4 @@
-# Setup webpack from Scratch
+# Setup [webpack](https://webpack.js.org/) from Scratch
 
 ### Steps
 

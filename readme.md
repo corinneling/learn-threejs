@@ -2,22 +2,24 @@
 
 This repo is my work from going through the [three.js docs tutorial](https:threejs.org/docs/#manual/en/introduction/Creating-a-scene)
 
-### Setup 
-
+## Setup 
 1. Install the threejs npm package with `npm i three --save`
-2. Setup your project with [webpack](https://webpack.js.org/)
+2. Setup your project with [webpack](https://github.com/corinneling/learn-threejs/blob/master/setup-webpack.md)
+3. Set the size of your canvas to 100%
+4. Reference your js file in the body tag of your html page
+5. Set the scene, camera, renderer
+6. Add an object
 
-### Notes
-
+## Notes
 To display anything with three js we need:
   1. Scene
   2. Camera
   3. Renderer
 
-##### Scene
+#### Scene
 `var scene = new THREE.Scene();`
 
-##### Camera
+#### Camera
 `var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);`
 
 PerspectiveCamera is one of a few cameras in three js
@@ -28,7 +30,7 @@ PerspectiveCamera is one of a few cameras in three js
   * 0.1 & 1000 = the near and far clipping plane
     * objects farther or closer away than these values will not be rendered 
 
-##### Renderer
+#### Renderer
 ```
 var renderer = new THREE.WebGLRenderer();
 render.setSize(window.innerWidth, window.innerHeight);
@@ -40,7 +42,8 @@ render.setSize(window.innerWidth, window.innerHeight);
      * Right now it will be fill the browser
      * For increased performance you can set it to window.innerWidth/2, window.innerHeight/2
 
-##### Add an Object
+#### Add an Object
+**Cube**
 ```
   var geometry = new THREE.BoxGeometry(1, 1, 1);
   var material = new THREE.MeshBasicMaterial({
@@ -56,7 +59,16 @@ render.setSize(window.innerWidth, window.innerHeight);
   * Mesh
     * Combines the two. It takes a BoxGeometry and applies a Material to it
 
-##### Render the Scene
+**Line**
+* There are two classes available for drawing lines: LineBasicMaterial or LineDashedMaterial
+* The lines are drawn between each consecutive pair of vertices. For example: 
+```
+geometry.vertices.push(new THREE.Vector3(-20, 0, 0));
+geometry.vertices.push(new THREE.Vector3(0, 20, 0));
+geometry.vertices.push(new THREE.Vector3(20, 0, 0));
+```
+
+#### Render the Scene
 ```
 function animate() {
     requestAnimationFrame(animate);

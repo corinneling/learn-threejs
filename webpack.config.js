@@ -3,10 +3,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: {
+    cube: './src/js/cube.js',
+    line: './src/js/line.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: '[name].js'
   },
   plugins: [
     new CopyWebpackPlugin([{
