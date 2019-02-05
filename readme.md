@@ -11,6 +11,8 @@ This repo is my work from going through the [three.js docs tutorial](https:three
 6. Add an object
 
 ## Notes
+threejs uses the WebGL API to create visuals in the browser by accessing a computer’s specialised graphics hardware using JavaScript, and render the output to a webpage in a <canvas>
+
 To display anything with three js we need:
   1. Scene
   2. Camera
@@ -20,14 +22,17 @@ To display anything with three js we need:
 `var scene = new THREE.Scene();`
 
 #### Camera
-`var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);`
+```
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+/// PerspectiveCamera( fov : Number, aspect : Number, near : Number, far : Number )
+```
 
 PerspectiveCamera is one of a few cameras in three js
-  * 75 = the field of view, or FOV
+  * 75 = Camera frustum vertical field of view.
     * the value is in degrees, and it is the max seen of the scene at any given time
-  * window.innerWidth / window.innerHeight = aspect ratio
+  * window.innerWidth / window.innerHeight = Camera frustum aspect ratio.
     * almost always use this ratio or the image will look squished
-  * 0.1 & 1000 = the near and far clipping plane
+  * 0.1 & 1000 = Camera frustum near and far plane.
     * objects farther or closer away than these values will not be rendered 
 
 #### Renderer
@@ -85,3 +90,6 @@ function animate() {
      * requestAnimationFrame pauses whenever a user goes to a different tab in their browser
 
     
+
+## Resources
+https://threejs.org/
