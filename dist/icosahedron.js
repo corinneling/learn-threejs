@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/cube.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/icosahedron.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -98,14 +98,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/js/cube.js":
-/*!************************!*\
-  !*** ./src/js/cube.js ***!
-  \************************/
+/***/ "./src/js/icosahedron.js":
+/*!*******************************!*\
+  !*** ./src/js/icosahedron.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\n// settings -------------------------------------------\nconst renderWidth = window.innerWidth,\n      renderHeight = window.innerHeight,\n      scene = new THREE.Scene(),\n      camera = new THREE.PerspectiveCamera(75, renderWidth / renderHeight, 0.1, 500),\n      renderer = new THREE.WebGLRenderer({alpha:true});\n// cube -----------------------------------------------\nconst geometry = new THREE.BoxGeometry(6, 6, 6),\n      material = new THREE.MeshPhongMaterial({color: 0x56c6ff}),\n      cube = new THREE.Mesh(geometry, material);\n\n\nfunction generateCube() {\n  // add the renderer \n  renderer.setSize(renderWidth, renderHeight);\n  renderer.setClearColor( 0xffffff, 0);\n  document.body.appendChild(renderer.domElement);\n\n  // add the cube\n  scene.add(cube);\n\n  // show axes\n  const axes = new THREE.AxesHelper();\n  axes.scale.set(1, 1, 1);\n  scene.add(axes);\n\n  // add light source to the scene\n  const light = new THREE.PointLight(0xffffff);\n  light.position.set(10, 15, 20);\n  scene.add(light);\n\n  const secondLight = new THREE.PointLight(0xFFFFFF , 1.5);\n  secondLight.position.set(25, 0, -80);\n  scene.add(secondLight);\n\n\n  // rotate the view of the camera\n  camera.position.set(10, 10, 10); \n  camera.lookAt( scene.position );\n}\n\n// render and the animate the cube\nfunction renderAnimation() {\n  requestAnimationFrame(renderAnimation);\n  renderer.render(scene, camera);\n  cube.rotation.x += 0.015;\n  cube.rotation.y += 0.015;\n}\n\n// resize the camera and the renderer\nfunction onWindowResize(){\n  camera.aspect = window.innerWidth / window.innerHeight;\n  camera.updateProjectionMatrix();\n  renderer.setSize(window.innerWidth, window.innerHeight);\n}\n\ngenerateCube()\nrenderAnimation();\nwindow.addEventListener('resize', onWindowResize);\n\n\n//# sourceURL=webpack:///./src/js/cube.js?");
+eval("const THREE = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n\n// settings -------------------------------------------\nconst renderWidth = window.innerWidth,\n      renderHeight = window.innerHeight,\n      scene = new THREE.Scene(),\n      camera = new THREE.PerspectiveCamera(75, renderWidth / renderHeight, 0.1, 500),\n      renderer = new THREE.WebGLRenderer({alpha:true});\n// cube -----------------------------------------------\n// const geometry = new THREE.IcosahedronGeometry(0, 20),\n//       material = new THREE.MeshLambertMaterial({color: 0x56c6ff, wireframe: true}),\n//       cube = new THREE.Mesh(geometry, material);\n\nvar geometry = new THREE.IcosahedronGeometry(20, 0);\nvar material = new THREE.MeshNormalMaterial();\nvar icosahedron = new THREE.Mesh( geometry, material );\n\n\nfunction generateCube() {\n  // add the renderer \n  renderer.setSize(renderWidth, renderHeight);\n  renderer.setClearColor( 0xffffff, 0);\n  document.body.appendChild(renderer.domElement);\n\n  // add the cube\n  scene.add( icosahedron );\n\n  // show axes\n  const axes = new THREE.AxesHelper();\n  axes.scale.set(1, 1, 1);\n  scene.add(axes);\n\n  // add light source to the scene\n  const light = new THREE.PointLight(0xffffff);\n  light.position.set(10, 15, 20);\n  scene.add(light);\n\n  // // rotate the view of the camera\n  camera.position.z = 100;\n\n}\n\n// render and the animate the cube\nfunction renderAnimation() {\n  requestAnimationFrame(renderAnimation);\n  renderer.render(scene, camera);\n  icosahedron.rotation.x += 0.025;\n  icosahedron.rotation.y += 0.025;\n}\n\n// resize the camera and the renderer\nfunction onWindowResize(){\n  camera.aspect = window.innerWidth / window.innerHeight;\n  camera.updateProjectionMatrix();\n  renderer.setSize(window.innerWidth, window.innerHeight);\n}\n\ngenerateCube()\nrenderAnimation();\nwindow.addEventListener('resize', onWindowResize);\n\n//# sourceURL=webpack:///./src/js/icosahedron.js?");
 
 /***/ })
 

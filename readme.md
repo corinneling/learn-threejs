@@ -11,7 +11,7 @@ This repo is my work from going through the [three.js docs tutorial](https:three
 6. Add an object
 
 ## Notes
-threejs uses the WebGL API to create visuals in the browser by accessing a computer’s specialised graphics hardware using JavaScript, and render the output to a webpage in a <canvas>
+threejs uses the [WebGL](https://caniuse.com/#feat=webgl) API to create visuals in the browser by accessing a computer’s specialised graphics hardware using JavaScript, and render the output to a webpage in a <canvas>
 
 To display anything with three js we need:
   1. Scene
@@ -28,7 +28,7 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHei
 ```
 
 PerspectiveCamera is one of a few cameras in three js
-  * 75 = Camera frustum vertical field of view.
+  * 75 = Camera frustum,the region of space in the modeled world that may appear on the screen, vertical field of view.
     * the value is in degrees, and it is the max seen of the scene at any given time
   * window.innerWidth / window.innerHeight = Camera frustum aspect ratio.
     * almost always use this ratio or the image will look squished
@@ -93,3 +93,4 @@ function animate() {
 
 ## Resources
 https://threejs.org/
+https://humaan.com/blog/web-3d-graphics-using-three-js/

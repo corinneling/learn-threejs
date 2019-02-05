@@ -7,9 +7,13 @@ const renderWidth = window.innerWidth,
       camera = new THREE.PerspectiveCamera(75, renderWidth / renderHeight, 0.1, 500),
       renderer = new THREE.WebGLRenderer({alpha:true});
 // cube -----------------------------------------------
-const geometry = new THREE.BoxGeometry(6, 6, 6),
-      material = new THREE.MeshPhongMaterial({color: 0x56c6ff}),
-      cube = new THREE.Mesh(geometry, material);
+// const geometry = new THREE.IcosahedronGeometry(0, 20),
+//       material = new THREE.MeshLambertMaterial({color: 0x56c6ff, wireframe: true}),
+//       cube = new THREE.Mesh(geometry, material);
+
+var geometry = new THREE.IcosahedronGeometry(20, 0);
+var material = new THREE.MeshNormalMaterial();
+var icosahedron = new THREE.Mesh( geometry, material );
 
 
 function generateCube() {
@@ -19,7 +23,7 @@ function generateCube() {
   document.body.appendChild(renderer.domElement);
 
   // add the cube
-  scene.add(cube);
+  scene.add( icosahedron );
 
   // show axes
   const axes = new THREE.AxesHelper();
@@ -31,22 +35,17 @@ function generateCube() {
   light.position.set(10, 15, 20);
   scene.add(light);
 
-  const secondLight = new THREE.PointLight(0xFFFFFF , 1.5);
-  secondLight.position.set(25, 0, -80);
-  scene.add(secondLight);
+  // // rotate the view of the camera
+  camera.position.z = 100;
 
-
-  // rotate the view of the camera
-  camera.position.set(10, 10, 10); 
-  camera.lookAt( scene.position );
 }
 
 // render and the animate the cube
 function renderAnimation() {
   requestAnimationFrame(renderAnimation);
   renderer.render(scene, camera);
-  cube.rotation.x += 0.015;
-  cube.rotation.y += 0.015;
+  icosahedron.rotation.x += 0.025;
+  icosahedron.rotation.y += 0.025;
 }
 
 // resize the camera and the renderer

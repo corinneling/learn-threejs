@@ -5,7 +5,8 @@ module.exports = {
   mode: 'development',
   entry: {
     cube: './src/js/cube.js',
-    line: './src/js/line.js'
+    line: './src/js/line.js',
+    icosahedron: './src/js/icosahedron.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
