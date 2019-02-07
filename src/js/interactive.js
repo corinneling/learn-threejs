@@ -1,51 +1,42 @@
 const THREE = require('three');
+const OrbitControls = require('three-orbit-controls')(THREE);
 
 // settings -------------------------------------------
 const renderWidth = window.innerWidth,
       renderHeight = window.innerHeight,
       scene = new THREE.Scene(),
       camera = new THREE.PerspectiveCamera(75, renderWidth / renderHeight, 0.1, 500),
-      renderer = new THREE.WebGLRenderer({alpha:true});
-// cube -----------------------------------------------
-// const geometry = new THREE.IcosahedronGeometry(0, 20),
-//       material = new THREE.MeshLambertMaterial({color: 0x56c6ff, wireframe: true}),
-//       cube = new THREE.Mesh(geometry, material);
+      renderer = new THREE.WebGLRenderer({alpha:true}),
+      controls = new OrbitControls(camera);
+// object -----------------------------------------------
+const icosahedron = new THREE.SphereGeometry(5, 32, 32),
+      knot = new THREE.TorusKnotGeometry(32, 4, 16, 20, 20),
+      material = new THREE.MeshNormalMaterial(),
+      icosahedronMesh = new THREE.Mesh( icosahedron, material ),
+      knotMesh = new THREE.Mesh( knot, material );
 
-var geometry = new THREE.IcosahedronGeometry(20, 0);
-var material = new THREE.MeshNormalMaterial();
-var icosahedron = new THREE.Mesh( geometry, material );
-
-
-function generateCube() {
+function generateObject() {
   // add the renderer 
   renderer.setSize(renderWidth, renderHeight);
-  renderer.setClearColor( 0xffffff, 0);
+  renderer.setClearColor(0xffffff, 0);
   document.body.appendChild(renderer.domElement);
-
-  // add the cube
-  scene.add( icosahedron );
-
-  // show axes
-  const axes = new THREE.AxesHelper();
-  axes.scale.set(1, 1, 1);
-  scene.add(axes);
-
+  // add the object
+  scene.add(icosahedronMesh);
+  scene.add(knotMesh);
   // add light source to the scene
   const light = new THREE.PointLight(0xffffff);
   light.position.set(10, 15, 20);
   scene.add(light);
-
-  // // rotate the view of the camera
-  camera.position.z = 100;
-
+  // rotate the view of the camera
+  camera.position.set(0, 20, 100);
+  controls.update();
 }
 
 // render and the animate the cube
 function renderAnimation() {
   requestAnimationFrame(renderAnimation);
   renderer.render(scene, camera);
-  icosahedron.rotation.x += 0.025;
-  icosahedron.rotation.y += 0.025;
+  controls.update();
 }
 
 // resize the camera and the renderer
@@ -55,6 +46,6 @@ function onWindowResize(){
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-generateCube()
+generateObject()
 renderAnimation();
 window.addEventListener('resize', onWindowResize);

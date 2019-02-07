@@ -1,6 +1,6 @@
 # three.js 
 
-This repo is my work from going through the [three.js docs tutorial](https:threejs.org/docs/#manual/en/introduction/Creating-a-scene)
+This repo is my work from going through the [three.js docs tutorial](https://threejs.org/docs)
 
 ## Setup 
 1. Install the threejs npm package with `npm i three --save`
@@ -11,17 +11,17 @@ This repo is my work from going through the [three.js docs tutorial](https:three
 6. Add an object
 
 ## Notes
-threejs uses the [WebGL](https://caniuse.com/#feat=webgl) API to create visuals in the browser by accessing a computer’s specialised graphics hardware using JavaScript, and render the output to a webpage in a <canvas>
+threejs uses the [WebGL](https://caniuse.com/#feat=webgl) API to create visuals in the browser by accessing a computer’s specialised graphics hardware using JavaScript, and render the output to a webpage in a `<canvas>`
 
 To display anything with three js we need:
   1. Scene
   2. Camera
   3. Renderer
 
-#### Scene
+### Scene
 `var scene = new THREE.Scene();`
 
-#### Camera
+### Camera
 ```
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 /// PerspectiveCamera( fov : Number, aspect : Number, near : Number, far : Number )
@@ -35,7 +35,7 @@ PerspectiveCamera is one of a few cameras in three js
   * 0.1 & 1000 = Camera frustum near and far plane.
     * objects farther or closer away than these values will not be rendered 
 
-#### Renderer
+### Renderer
 ```
 var renderer = new THREE.WebGLRenderer();
 render.setSize(window.innerWidth, window.innerHeight);
@@ -47,7 +47,7 @@ render.setSize(window.innerWidth, window.innerHeight);
      * Right now it will be fill the browser
      * For increased performance you can set it to window.innerWidth/2, window.innerHeight/2
 
-#### Add an Object
+### Add an Object
 **Cube**
 ```
   var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -73,7 +73,7 @@ geometry.vertices.push(new THREE.Vector3(0, 20, 0));
 geometry.vertices.push(new THREE.Vector3(20, 0, 0));
 ```
 
-#### Render the Scene
+### Render the Scene
 ```
 function animate() {
     requestAnimationFrame(animate);
@@ -89,8 +89,13 @@ function animate() {
      * A typical screen is refreshed 60 times per second
      * requestAnimationFrame pauses whenever a user goes to a different tab in their browser
 
-    
+### Add [Orbit Control](https://threejs.org/docs/#examples/controls/OrbitControls)
+1. Add the [npm package](https://www.npmjs.com/package/three-orbit-controls): `npm i three-orbit-controls` 
+2. Require it in the file: `const OrbitControls = require('three-orbit-controls')(THREE);`
+3. Create a new instance of the oribit control: `const controls = new OrbitControls(camera);`
+4. In the render function and in the animate function call the update method: `controls.update();`
 
 ## Resources
 https://threejs.org/
+
 https://humaan.com/blog/web-3d-graphics-using-three-js/

@@ -6,7 +6,8 @@ module.exports = {
   entry: {
     cube: './src/js/cube.js',
     line: './src/js/line.js',
-    icosahedron: './src/js/icosahedron.js'
+    interactive: './src/js/interactive.js',
+    multiple: './src/js/multiple.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
