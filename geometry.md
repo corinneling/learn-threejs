@@ -27,3 +27,6 @@ CircleGeometry
 http://blog.cjgammon.com/threejs-geometry
 https://medium.com/@crazypixel/geometry-manipulation-in-three-js-twisting-c53782c38bb
 
+
+https://threejs.org/docs/#api/en/lights/shadows/LightShadow
+

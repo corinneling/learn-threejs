@@ -99,3 +99,9 @@ function animate() {
 https://threejs.org/
 
 https://humaan.com/blog/web-3d-graphics-using-three-js/
+
+### 3D Graphics
+* [3D Warehouse](https://3dwarehouse.sketchup.com/) is a great place to get free 3D Graphics to test out threejs with
+
+* Sketchup
+https://www.sketchup.com/plans-and-pricing#for-personal

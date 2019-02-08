@@ -7,7 +7,8 @@ module.exports = {
     cube: './src/js/cube.js',
     line: './src/js/line.js',
     interactive: './src/js/interactive.js',
-    multiple: './src/js/multiple.js'
+    multiple: './src/js/multiple.js',
+    plane: './src/js/plane.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
